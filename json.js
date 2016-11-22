@@ -1,8 +1,13 @@
 var globaljson;
 
 function query(e){
+	var start=document.getElementById("origin").value.split(' ').join('+');
+	var end=document.getElementById("dest").value.split(' ').join('+');
+	var url = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&key=AIzaSyDovWr_LDmCl7_ZdN0yZf2HBq-47ZVkmWs&alternatives=true";
+
 	var req = new XMLHttpRequest();
-	req.open('GET','https://maps.googleapis.com/maps/api/directions/json?origin=J+P+Nagar&destination=Jayanagar&key=AIzaSyDovWr_LDmCl7_ZdN0yZf2HBq-47ZVkmWs&alternatives=true',true);
+	console.log(url);
+	req.open('GET',url,true);
 	req.send();
 
 	req.onreadystatechange = processRequest;
