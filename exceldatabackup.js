@@ -1,4 +1,4 @@
-var file;
+var file, raw;
 var setresult; //reference to the <p> tag
 
 function init() {
@@ -6,47 +6,62 @@ function init() {
        //Variable data contains parsed excel data
 
        //new global variable for extra json key
-       file= data;
+       raw= data;
 
        console.log("Reading latitude and longitude");
 
        //add a key-value pair to hold Distance_value
-       for(i=0;i< file.length; i++) {
-            file[i].Distance_value = 0;
+       for(i=0;i< raw.length; i++) {
+            raw[i].Distance_value = 0;
        } 
        //console.log(file[0].District_name);
 
         //user's lat-lon
         var user= document.getElementById('input').value; //"12.9719,77.5299" vijayanagar   13.0081,77.5648 malleshwaram
 
-        //place a GET query urls in an array called 'url'
-        var urls = [];
 
         //for multiple queries make a new variable with time stamp
-
-        //extract the lat-lon of each place in a for loop
-        for(i=0;i<file.length;i++) 
-        {
-            //for each lat-lon
-            var dest = "" + file[i].Latitude+ "," + file[i].Longitude; //first value in baselocation.json
-
-            urls.push("https://maps.googleapis.com/maps/api/directions/json?origin="+user+"&destination="+dest+"&key=AIzaSyDovWr_LDmCl7_ZdN0yZf2HBq-47ZVkmWs");
-            //console.log(urls[i]); 
-        }
         
         
         //ajax call
-        callajax(urls);
+        callajax(user, function() {
+
+            var finaldata = "";   //Reference to html display data
+
+                for(k=0;k<4;k++){
+                        var finaldata = finaldata.concat("", (k+1) + "==" + file[k].Locality_name + "==" + file[k].District_name + '===' + file[k].Mobile_Number +  "===" + file[k].Distance_value +"<br/>");
+                    }
+
+                 ///////////////////////////////////////// one is the id of <p> tag ////////////////////////////////////   
+                document.getElementById("one").innerHTML = finaldata ;
+
+        });
     
         
     }) ;  //getjson
 }
 
-function  callajax(urls) {
+function  callajax(user,callback) {
+
+
+        //place a GET query urls in an array called 'url'
+        var urls = [];
+
+//extract the lat-lon of each place in a for loop
+        for(i=0;i<raw.length;i++) 
+        {
+            //for each lat-lon
+            var dest = "" + raw[i].Latitude+ "," + raw[i].Longitude; //first value in baselocation.json
+
+            urls.push("https://maps.googleapis.com/maps/api/directions/json?origin="+user+"&destination="+dest+"&key=AIzaSyChxZIGi4Y1AMQjAzjVktr4w8nQJBGxz6I");
+            //console.log(urls[i]); 
+        }
+        file = JSON.parse(raw);
+
     //ajax calls for map data
         var get_distance = $.each(urls, function(index,value) {
                 
-            $.ajax({url: value, async: false, success: function(result){
+            $.ajax({url: value, async: false, dataType: 'jsonp',success: function(result){
 
                 console.log("Querying data . . ");
 
@@ -81,20 +96,14 @@ function  callajax(urls) {
                     console.log("place = " + file[j].Locality_name + " Distance == " + file[j].Distance_value);
                 }
 
-                 var finaldata = "";   //Reference to html display data
-
-                for(k=0;k<4;k++){
-                        var finaldata = finaldata.concat("", (k+1) + "} "+ file[k].Locality_name + ",<br/>" + file[k].District_name + ",<br/>" + file[k].Mobile_Number +  "<br/>" + file[k].Distance_value +"<br/> <br/>");
-                    }
-
-                 ///////////////////////////////////////// one is the id of <p> tag ////////////////////////////////////   
-                document.getElementById("one").innerHTML = finaldata ;
-
+                 
                                
             } , function() {  //failure
 
             console.log('error');
         });
+
+        callback();
 }
 
 function sorting(array, key) {

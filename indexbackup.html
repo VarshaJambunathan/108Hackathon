@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Panel design -->
+    <script type="text/javascript" src="exceldata.js"></script>
 </head>
 <body>
 
@@ -40,12 +41,12 @@
         <div class="list-group">
             <div ng-repeat="todo in todos" class="list-group-item">
                 <div class="panel panel-primary">
-                  <div class="panel-heading">{{todo.name}} - {{todo.phoneNumber}}
+                  <div class="panel-heading">{{todo.name}}
                       <button class='btn btn-danger pull-right' ng-click="removeTodo(todo)">X</button>
-                      <button class='btn btn-danger pull-right' > PROCESS</button>
+                      <button class='btn btn-danger pull-right' onclick="callajax(document.getElementById('latlon').value)" > PROCESS</button>
                   </div>
                   <div class="panel-body">
-                  <input type="text" value={{todo.latitude}},{{todo.longitude}} class="mywidth"></div>
+                  <input type="text" id="latlon" value="{{todo.latitude}},{{todo.longitude}}"" class="mywidth"></div>
                   <p><br/></p>
 
 

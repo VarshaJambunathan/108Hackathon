@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="json.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SHORTEST DISTANCE FINDER</title>
+
+<style type="text/css">
+
+* { margin: 0; padding: 0; }
+
+html { height: 100%; font-size: 62.5% }
+
+body { height: 100%; background-color: #FFFFFF; font: 1.2em Verdana, Arial, Helvetica, sans-serif; padding-left: 400px;}
+
+
+/* ==================== Form style sheet ==================== */
+
+form { margin: 25px 0 0 29px; width: 450px; padding-bottom: 30px; }
+
+fieldset { margin: 0 0 22px 0; border: 1px solid #095D92; padding: 12px 17px; background-color: #DFF3FF; }
+legend { font-size: 1.1em; background-color: #095D92; color: #FFFFFF; font-weight: bold; padding: 4px 8px; }
+
+label.float { float: left; display: block; width: 100px; margin: 4px 0 0 0; clear: left; }
+label { display: block; width: auto; margin: 0 0 10px 0; }
+label.spam-protection { display: inline; width: auto; margin: 0; }
+
+input.inp-text, textarea, input.choose, input.answer { border: 1px solid #909090; padding: 3px; }
+input.inp-text { width: 300px; margin: 0 0 8px 0; }
+textarea { width: 400px; height: 150px; margin: 0 0 12px 0; display: block; }
+
+input.choose { margin: 0 2px 0 0; }
+input.answer { width: 40px; margin: 0 0 0 10px; }
+input.submit-button { font: 1.4em Georgia, "Times New Roman", Times, serif; letter-spacing: 1px; display: block; margin: 23px 0 0 0; }
+
+form br { display: none; }
+
+/* ==================== Form style sheet END ==================== */
+
+</style>
+
+</head>
+
+
+<body>
+
+	<form action="" method="post" id="jsondata">
+		<!-- ============================== Fieldset 1 ============================== -->
+		<fieldset>
+			<legend>SHORTEST ROUTE DISTANCE:</legend>
+				<label class="float"><strong>Origin:</strong></label><br />
+				<input class="inp-text" id="origin" type="text" size="30" placeholder="Enter origin" /><br />
+
+				<label class="float"><strong>Destination:</strong></label><br />
+				<input class="inp-text" id="dest" type="text" size="30" placeholder="Enter destination" />
+
+				<button id="alertbox" > FIND </button><br>
+
+		</fieldset>
+		<!-- ============================== Fieldset 1 end ============================== -->
+
+
+		<!-- ============================== Fieldset 2 ============================== -->
+		<fieldset>
+			<legend>JSON PARSED DISTANCE</legend>
+				<p > To display the distances</p>
+		</fieldset>
+		<!-- ============================== Fieldset 2 end ============================== -->
+
+	</form>
+
+</body>
+</html>

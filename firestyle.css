@@ -1,5 +1,23 @@
-body {margin:0;}
+.editing {
+    border-bottom: none;
+    padding: 0;
+}
+.editing .edit {
+    display: block;
+    width: 506px;
+    padding: 13px 17px 12px 17px;
+    margin: 0 0 0 43px;
+}
+.editing .view {
+    display: none;
+}
+.editing:last-child {
+    margin-bottom: -1px;
+}
 
+.mywidth {
+	width:300px;
+}
 ul {
     list-style-type: none;
     margin: 0;
@@ -7,9 +25,7 @@ ul {
     overflow: hidden;
     background-color: #333;
     position: fixed;
-    top: 0;
-    width: 100%;
-    
+    width:100%;
 }
 
 li {
@@ -24,6 +40,6 @@ li a {
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
+li a:hover {
     background-color: #111;
 }

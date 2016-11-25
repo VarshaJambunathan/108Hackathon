@@ -3,13 +3,35 @@
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="exceldata.js"></script>
+	 <link rel="stylesheet" href="firestyle.css" media="screen" title="no title"></pre>
 	<title>Excel input</title>
 	<meta charset="utf-8">
+	<style>
+		.mytext {
+			padding-left: 200px;
+			padding-top: 50px;
+		}
+		.ip {
+			width: 400px;
+		}
+	</style>
 </head>
 <body>
-	<input type="text" id="input"></input>
-	<button onclick="init()">Parse Excel</button><br/><br/>
+<ul>
+  <li><a class="active" href="index.html"> < DASHBOARD ></a></li>
+  <li><a href="indexExcel.html">PARSE LAT-LON</a></li>
+  <li><a href="indexjson.html">DISTANCE CALCULATOR</a></li>
+  <li><a href="baselocation.json">DATABASE</a></li>
+  <li><a href="about.html">ABOUT</a></li>
+</ul>
+<div class="mytext">
+<h1>On entering a latitude-longitude pair, JavaScript file calculates <br/>the closest service centre.</h1>
+<h3>Ex: Enter comma seperated values <br/> <br/>Vijayanagar  =  12.9719,77.5299 or Malleshwaram   = 13.0081,77.5648</h3>
+<h5>It runs synchronously, so please wait for a few minutes! </h5>
+	<input type="text" id="input" class="ip"></input> <br/> <br/>
+	<button onclick="init()">PARSE</button> <br/> <br/>
 	<p id="one">1</p>
+</div>
 
 </body>
 </html>

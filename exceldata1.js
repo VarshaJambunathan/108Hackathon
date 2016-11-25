@@ -1,5 +1,4 @@
 var file;
-var setresult; //reference to the <p> tag
 
 function init() {
     $.getJSON("baselocation.json",function(data) {
@@ -8,7 +7,7 @@ function init() {
        //new global variable for extra json key
        file= data;
 
-       console.log("Reading latitude and longitude");
+       document.getElementById("one").innerHTML = "Reading latitude and longitude";
 
        //add a key-value pair to hold Distance_value
        for(i=0;i< file.length; i++) {
@@ -34,21 +33,12 @@ function init() {
             //console.log(urls[i]); 
         }
         
-        
-        //ajax call
-        callajax(urls);
-    
-        
-    }) ;  //getjson
-}
-
-function  callajax(urls) {
-    //ajax calls for map data
+        //ajax calls for map data
         var get_distance = $.each(urls, function(index,value) {
                 
-            $.ajax({url: value, async: false, success: function(result){
+            $.ajax({url: value, async: false, dataType :'jsonp', success: function(result){
 
-                console.log("Querying data . . ");
+                document.getElementById("one").innerHTML = "Querying data . . ";
 
                 //retrieve the first distance value; 
                 //var distance = result.routes[0].legs[0].distance.text
@@ -62,7 +52,9 @@ function  callajax(urls) {
 
              , complete : function(data) {
                 //console.log("place = " + file[index].District_name + " Distance == " + file[index].Distance_value);
-                } 
+                document.getElementById("one").innerHTML = "Processing completed !!"; 
+
+            } 
 
             });
         }); 
@@ -72,7 +64,7 @@ function  callajax(urls) {
             
             console.log(file.length);
                 
-                console.log("Displaying data . . . "); 
+                document.getElementById("one").innerHTML = "Displaying data . . . "; 
 
                 //sorting file wrt distance
                 sorting(file, 'Distance_value');
@@ -81,20 +73,21 @@ function  callajax(urls) {
                     console.log("place = " + file[j].Locality_name + " Distance == " + file[j].Distance_value);
                 }
 
-                 var finaldata = "";   //Reference to html display data
+                var finaldata = "";   //Reference to html display data
 
                 for(k=0;k<4;k++){
-                        var finaldata = finaldata.concat("", (k+1) + "} "+ file[k].Locality_name + ",<br/>" + file[k].District_name + ",<br/>" + file[k].Mobile_Number +  "<br/>" + file[k].Distance_value +"<br/> <br/>");
+                        var finaldata = finaldata.concat("", (k+1) + "==" + file[k].Locality_name + "==" + file[k].District_name + '===' + file[k].Mobile_Number +  "===" + file[k].Distance_value +"<br/>");
                     }
 
-                 ///////////////////////////////////////// one is the id of <p> tag ////////////////////////////////////   
                 document.getElementById("one").innerHTML = finaldata ;
+            
 
-                               
             } , function() {  //failure
 
             console.log('error');
         });
+        
+    }) ;  //getjson
 }
 
 function sorting(array, key) {

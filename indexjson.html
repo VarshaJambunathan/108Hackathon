@@ -3,17 +3,35 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="json.js"></script>
-	<title>Manipulated using JS</title>
+	 <link rel="stylesheet" href="firestyle.css" media="screen" title="no title"></pre>
+	<title>Shortest distance</title>
+	<style>
+		.mytext{
+			padding-left: 200px;
+			padding-top: 50px;
+		}
+	</style>
 </head>
 <body>
-	<div>
-		ORIGIN : <input id="origin" type="text" name="origin" placeholder="Enter origin"> <br>
-		DESTINATION : <input id="dest" type="text" name="dest" placeholder="Enter destination"><br>
-	</div>
+<ul>
+  <li><a class="active" href="index.html"> < DASHBOARD ></a></li>
+  <li><a href="indexExcel.html">PARSE LAT-LON</a></li>
+  <li><a href="indexjson.html">DISTANCE CALCULATOR</a></li>
+  <li><a href="baselocation.json">DATABASE</a></li>
+  <li><a href="about.html">ABOUT</a></li>
+</ul>
+<div class="mytext">
+		<h1>Enter any 2 places and get to know the shortest distance between them</h1>
+		<h3>Ex: Origin = Koyambedu <br/> Destination = Guindy</h3>
+		<div>
+		ORIGIN : <p>  </p><input id="origin" type="text" name="origin" placeholder="Enter origin"> <p>  </p><br>
+		DESTINATION : <p> </p><input id="dest" type="text" name="dest" placeholder="Enter destination"> <p>  </p><br>
+		</div>
 
-	<button id="alertbox"  onclick="query()">FIND</button><br>
+	<button id="alertbox"  onclick="query()">FIND</button> <p>  </p><br>
 
-	JSON DATA :
+	JSON DATA : <p>  </p>
 	<p id="jsondata"></p>
+</div>
 </body>
 </html>
