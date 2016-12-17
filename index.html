@@ -16,16 +16,18 @@
     <!-- Panel design -->
 </head>
 <body>
+	<div class="stay">
+		<ul>
+		  <li><a class="active" href="index.html"> < DASHBOARD ></a></li>
+		  <li><a href="indexExcel.html">PARSE LAT-LON</a></li>
+		  <li><a href="indexjson.html">DISTANCE CALCULATOR</a></li>
+		  <li><a href="baselocation.json">DATABASE</a></li>
+		  <li><a href="about.html">ABOUT</a></li>
+		</ul>
+	</div>
+	<!--         left sidebar         -->
 
-<ul>
-  <li><a class="active" href="index.html"> < DASHBOARD ></a></li>
-  <li><a href="indexExcel.html">PARSE LAT-LON</a></li>
-  <li><a href="indexjson.html">DISTANCE CALCULATOR</a></li>
-  <li><a href="baselocation.json">DATABASE</a></li>
-  <li><a href="about.html">ABOUT</a></li>
-</ul>
-
-//left sidebar
+	<!--         left sidebar         -->
 
     
 	<!-- AngularJS -->
@@ -37,32 +39,35 @@
 
     <script src='angfire.js'></script>
 
-    <!--fire data -->
-    <div class='container' ng-controller="TodoCtrl">
-    <section class="row">
-        <h3 class="mov">PING REQUESTS <h4>(The process buttons are not functional yet, but they will fuction exactly like the PARSE button in PARSE LAT-LON tab)</h4></h3>
-        <div class="list-group">
-            <div ng-repeat="todo in todos" class="list-group-item">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">{{todo.name}} - {{todo.phoneNumber}}
-                      <button class='btn btn-danger pull-right' ng-click="removeTodo(todo)">X</button>
-                      <button class='btn btn-danger pull-right' > PROCESS</button>
-                  </div>
-                  <div class="panel-body">
-                  <input type="text" value={{todo.latitude}},{{todo.longitude}} class="mywidth"></div>
-                  <p><br/></p>
+	<div class="dstay" ng-controller="TodoCtrl">
+	    <!--fire data -->
+	    <div class='container'>
+	    <section class="row">
+	        <h3 class="mov">PING REQUESTS <h4>(The process buttons are not functional yet, but they will fuction exactly like the PARSE button in PARSE LAT-LON tab)</h4></h3>
+	        <div class="list-group">
+	            <div ng-repeat="todo in todos" class="list-group-item">
+	                <div class="panel panel-primary">
+	                  <div class="panel-heading">{{todo.name}} - {{todo.phoneNumber}}
+	                      <button class='btn btn-danger pull-right' ng-click="removeTodo(todo)">X</button>
+	                      <button class='btn btn-danger pull-right' > PROCESS</button>
+	                  </div>
+	                  <div class="panel-body">
+	                  	<input type="text" value={{todo.latitude}},{{todo.longitude}} class="mywidth">
+	                  </div>
+	                  <p><br/></p>
 
 
 
-                  <!--============================ dynamic processing - js file ========================================-->
-                  <p id="one"> &nbsp; PROCESSSED RESULTS WILL BE DISPLAYED HERE</p></div>
+	                  <!--============================ dynamic processing - js file ========================================-->
+	                  <p id="one"> &nbsp; PROCESSSED RESULTS WILL BE DISPLAYED HERE</p>
+	                </div>
 
-                  <!--============================ dynamic processing - js file ========================================-->
-                </div>
-                
-            </div>
-        </div>
-    </section>    
-
+	                  <!--============================ dynamic processing - js file ========================================-->
+	            </div>
+	                
+	        </div>
+	    </div>
+	    </section>    
+	</div>
 </body>
 </html>

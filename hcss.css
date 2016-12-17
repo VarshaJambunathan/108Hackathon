@@ -1,3 +1,10 @@
 .mov {
 	padding-top:45px;
 }
+.stay{
+	position: absolute;
+	z-index: 1;
+}
+.dstay{
+	z-index: 2;
+}
